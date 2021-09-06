@@ -9,6 +9,10 @@
     <script src="//code.angularjs.org/snapshot/angular.min.js"></script>
     <script src="./index.js"></script>
     <script src="./bookList/bookList.js"></script>
+    <script src="./auth/auth.js"></script>
+    <script src="./login/login.js"></script>
+    <script src="./addBook/addBook.js"></script>
+    <script src="./editBook/editBook.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
@@ -19,14 +23,21 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/angular-ui-router-uib-modal@0.0.11/angular-ui-router-uib-modal.min.js"></script> 
+    <script
+        src="https://cdn.jsdelivr.net/npm/angular-ui-router-uib-modal@0.0.11/angular-ui-router-uib-modal.min.js"></script>
 
     <!-- <script src="bookDetail.js"></script> -->
 
 </head>
 
 <body ng-app="libraryApp">
-    <book-list></book-list>
+    <library-app>
+        <login></login>
+        <book-list></book-list>
+        <auth></auth>
+        <add-book></add-book>
+    </library-app>
 </body>
+<script src="https://unpkg.com/@angular/router@0.2.0/angular1/angular_1_router.js"></script>
 
 </html>

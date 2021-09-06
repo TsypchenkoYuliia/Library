@@ -4,3 +4,11 @@ table tr th{
     text-align:left;
     vertical-align:center;
   }
+
+  .new{
+    margin-left: 15px;
+  }
+
+  td, th {
+    text-align: center !important;
+  }

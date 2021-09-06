@@ -2,31 +2,9 @@
   'use strict';
   function BookListController($scope) {
 
-    $scope.data = [{
-      title: "Title1",
-      author: "Author1",
-      year: "2021",
-      house: "House1",
-      addedUser: "TestUser1",
-      readUser: "readUser"
-    },
-    {
-      title: "Title2",
-      author: "Author1",
-      year: "2021",
-      house: "House1",
-      addedUser: "TestUser1",
-      readUser: ""
-    },
-    {
-      title: "Title31",
-      author: "Author1",
-      year: "2021",
-      house: "House1",
-      addedUser: "TestUser1",
-      readUser: ""
-    }
-    ];
+    $scope.currentUser = JSON.parse(localStorage.getItem('user') || "[]").name;
+
+    $scope.data = JSON.parse(localStorage.getItem("data") || "[]");
 
     $scope.dataTableOpt = {
       "aLengthMenu": [[10, 50, 100, -1], [10, 50, 100, 'All']],
@@ -72,10 +50,36 @@
       }
     }
 
+    $scope.reserve = function (book) {
+      var user = JSON.parse(localStorage.getItem('user') || "[]");
+
+      if (user === null){
+          angular.element($("#registerModal").modal('show'));
+      }
+      else{
+          var bookFromStorage = $scope.data.find(x=>x.title === book.title);
+          var index = $scope.data.indexOf(bookFromStorage);
+
+          $scope.data.splice(index, 1);
+          book.readUser = user.name;
+          $scope.data.push(book);
+          $scope.update();
+      }
+  }
+
     $scope.submit = function (user) {
       localStorage.setItem("user", angular.toJson(user));
       // $scope.close();
     };
+
+    $scope.add = function ()  {
+      angular.element($("#addBookModal").modal('show'));
+    }
+
+    $scope.update = function () {
+      localStorage.removeItem("data");
+      localStorage.setItem("data", angular.toJson($scope.data));
+  }
 
   }
 
@@ -83,11 +87,14 @@
 
   angular.module('libraryApp').component('bookList', {
     templateUrl: 'bookList/bookList.html',
-    controller: BookListController
+    controller: BookListController,
+    $routeConfig: [
+      {path: '/books', name: 'BookList', component: 'bookList'}
+    ]
   })
   .directive('minDate', function() {
     return {
       template: '1900-01-01'
     };
-  });
+  })
 })(window.angular);
