@@ -26,12 +26,12 @@
                     <td>{{book.house}}</td>
                     <td>{{book.addedUser}}</td>
                     <td>
-                        <button ng-if='!book.readUser' ng-click='reserve(book)'>Reserve</button>
+                        <button ng-if='!book.readUser' ng-click='reserve(book)'>Reserve book</button>
                         <span ng-if='book.readUser'>{{book.readUser}}</span>
                     </td>
                     <td>
-                        <button ng-if='book.addedUser === currentUser' ng-click='edit(book)'>Edit</button>
-                        <button ng-if='book.readUser === currentUser'>Return</button>
+                        <button ng-if='book.addedUser === currentUser' ng-click='edit(book)'>Edit book</button>
+                        <button ng-if='book.readUser === currentUser' ng-click='return(book)'>Return book</button>
                     </td>
                 </tr>
             </tbody>

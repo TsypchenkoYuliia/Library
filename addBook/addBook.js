@@ -2,9 +2,8 @@
     'use strict';
     function AddBookController($scope) {
 
-        $scope.data = JSON.parse(localStorage.getItem("data") || "[]");
-
         $scope.submit = function (newBook) {
+            $scope.data = JSON.parse(localStorage.getItem("data") || "[]");
             newBook.addedUser = JSON.parse(localStorage.getItem('user') || "[]").name;
             $scope.data.push(newBook);
             $scope.update();
@@ -28,7 +27,7 @@
         templateUrl: 'addbook/addbook.html',
         controller: AddBookController,
         $routeConfig: [
-            { path: '/addbook', name: 'Addbook', component: 'Addbook' }
+            { path: '/addbook', name: 'Addbook', component: 'addbook' }
         ]
     });
 })(window.angular);

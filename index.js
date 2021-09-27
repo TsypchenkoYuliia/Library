@@ -29,27 +29,3 @@ angular.module('libraryApp', ['ngComponentRouter'])
 })
 
 })(window.angular);
-
-
-
-
-//   angular.module('libraryApp', ['ngComponentRouter']);
-
- 
-
-
-//   (function(angular) {
-//     'use strict';
-//   angular.module('libraryApp')
-//   .config(['$routeProvider',
-//   function config($routeProvider) {
-//     $routeProvider.
-//       when('/login', {
-//         templateUrl: '<login></login>'
-//       }).
-//       when('/books/:bookId', {
-//         template: '<book-detail></book-detail>'
-//       }).
-//       otherwise('/login');
-//   }
-// ])})(window.angular);

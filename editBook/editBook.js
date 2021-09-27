@@ -25,10 +25,10 @@
     }
 
     angular.module('libraryApp').component('editBook', {
-        templateUrl: 'editbook/editbook.html',
+        templateUrl: 'editBook/editBook.html',
         controller: EditBookController,
         $routeConfig: [
-            { path: '/editbook', name: 'Editbook', component: 'Editbook' }
+            { path: '/editbook', name: 'EditBook', component: 'editBook' }
         ]
     });
 })(window.angular);
