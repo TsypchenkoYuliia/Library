@@ -1,0 +1,10 @@
+{
+  "name": "Library",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "@angular/router": "0.2.0",
+    "angular": "1.5.x"
+  }
+}

@@ -1,0 +1,51 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+<div class="panel">
+    <div class="panel-heading border">
+        <h3>Сurrent User</h3>
+        <input type="text" class="form-control" name="name" ng-model="$ctrl.currentUser" readonly>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered bordered table-striped table-condensed datatable" ui-jq="dataTable"
+            ui-options="dataTableOpt">
+            <thead>
+                <tr>
+                    <th>Book id</th>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>Year</th>
+                    <th>Publisher House</th>
+                    <th>Added book</th>
+                    <th>Reading now</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="book in $ctrl.data">
+                    <td>{{book.id}}</td>
+                    <td>{{book.title}}</td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.year}}</td>
+                    <td>{{book.house}}</td>
+                    <td>{{book.addedUser}}</td>
+                    <td>
+                        <button  class="read" ng-if='!book.readUser' ng-click='$ctrl.reserve(book)'>Read</button>
+                        <span ng-if='book.readUser'>{{book.readUser}}</span>
+                    </td>
+                    <td>
+                        <button  class="edit" ng-if='book.addedUser === $ctrl.currentUser' ng-click='$ctrl.edit(book.id)'>Edit</button>
+                        <button class="return" ng-if='book.readUser === $ctrl.currentUser' ng-click='$ctrl.return(book)'>Return</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-warning new" ng-click='$ctrl.add()'>Add new book</button>
+    <button class="btn btn-info" ng-click='$ctrl.back()'>Back to Login</button>
+</div>
+<ng-outlet></ng-outlet>
